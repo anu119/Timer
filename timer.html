@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Timer</title>
+</head>
+<body align="center">
+	<h2>Privado Timer</h2>
+    <h1><label id="minutes">00</label><label id="colon">:</label><label id="seconds">00</label></h1>
+    <label><input type="submit" id="submit" value="Start" onclick="update()"></label>
+<script type="text/javascript">
+    var minu=document.getElementById('minutes');
+    var sec=document.getElementById('seconds');
+    var col=document.getElementById('colon');
+    var ht=document.getElementsByTagName('h1')[0];
+    var interval=null;
+    tot=0;
+    function update(){
+        var val=document.getElementById('submit').value;
+        if(val=="Start")
+        {
+            document.getElementById('submit').value="Pause";
+            interval = setInterval(function () {
+                tot += 1;
+                if(tot>=300)
+                {
+                    clearTimeout(interval);
+                    document.getElementById('submit').value="Reset";
+                    tot=0;
+                    ht.style.color='red';
+                }
+                minu.innerHTML=pad(Math.floor(tot/ 60 % 60));
+                sec.innerHTML=pad(parseInt(tot % 60));
+            }, 1000);
+        }
+        if(val=='Pause'){
+            document.getElementById('submit').value="Start";
+            clearInterval(interval);
+        }
+        if(val=='Reset')
+        {
+            document.getElementById('submit').value="Start";
+            tot=0;
+            ht.style.color="black";
+        }
+    }
+    function pad(val){
+        var valString = val + "";
+        if(valString.length < 2){
+            return "0" + valString;
+        }
+        else{
+            return valString;
+        }
+    }
+</script>
+</body>
+</html>
