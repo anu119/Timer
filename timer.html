@@ -5,12 +5,11 @@
 </head>
 <body align="center">
 	<h2>Privado Timer</h2>
-    <h1><label id="minutes">00</label><label id="colon">:</label><label id="seconds">00</label></h1>
+    <h1><label id="minutes">00</label>:<label id="seconds">00</label></h1>
     <label><input type="submit" id="submit" value="Start" onclick="update()"></label>
 <script type="text/javascript">
     var minu=document.getElementById('minutes');
     var sec=document.getElementById('seconds');
-    var col=document.getElementById('colon');
     var ht=document.getElementsByTagName('h1')[0];
     var interval=null;
     tot=0;
